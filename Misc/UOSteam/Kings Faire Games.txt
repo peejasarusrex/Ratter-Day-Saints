@@ -1,0 +1,35 @@
+//Sivs Creation
+@clearjournal
+headmsg 'Journal cleared!' 11
+//join the queue, record buying a ticket an paste here
+//Start HERE
+//
+useobject 0x405f
+waitforgump 0x86a56d75 15000
+replygump 0x86a56d75 2
+waitforgump 0x86a56d75 15000
+replygump 0x86a56d75 0
+//
+//End HERE
+Pause 600
+//Wait to join the game
+while @injournal "You join" system
+  headmsg 'Joined the queue' 11
+  pause 3000
+  if @injournal "You now have" system
+    headmsg 'In the game!' 11
+    break
+  endif
+endwhile
+//Pause to exit the game
+pause 2000
+//Wait to get out of the game
+while @injournal "You now have" system
+  headmsg 'Still in the game!' 11
+  pause 1000
+  if @injournal "You are no longer hindered." system
+    pause 3000
+    headmsg 'Clearing journal!' 11
+    @clearjournal
+  endif
+endwhile
