@@ -1,0 +1,85 @@
+//-----------------Auto Hike---------------------//
+//--Author: Peej                                 //
+//--Creates campfire / hikes to default location //
+//List of towns                                  //
+// Edit line 63 put corresponding number below   //
+// in []  ex. Location[4]                        //
+//+++ 0 - Andaria                                //
+//+++ 1 - Cambria                                //
+//+++ 2 - Corpse Creek                           //
+//+++ 3 - Horseshoe Bay                          //
+//+++ 4 - Outpost                                //
+//+++ 5 - Prevalia                               //
+//+++ 6 - Shelter Island (default)               //
+//+++ 7 - Terran                                 //
+//-----------------------------------------------//
+if not timerexists 'Combat_Pause'
+  createtimer 'Combat_Pause'
+endif
+if not listexists 'Location'
+  createlist 'Location'
+  @pushlist 'Location' 20 // Andaria
+  @pushlist 'Location' 21 // Cambria
+  @pushlist 'Location' 22 // Corpse Creek
+  @pushlist 'Location' 23 // Horseshoe Bay
+  @pushlist 'Location' 24 // Outpost
+  @pushlist 'Location' 25 // Prevalia
+  @pushlist 'Location' 26 // Shelter Island
+  @pushlist 'Location' 27 // Terran
+endif
+//Set Atlas
+if not @findalias 'atlas'
+  headmsg '[Select Atlas]' 79
+  promptalias 'atlas'
+endif
+//clearjournal to start
+clearjournal
+//Kindling Check
+//Default location set is Outpost
+if not @findtype '0xde1'
+  headmsg '[NO KINDLING FOUND]' 79
+  stop
+elseif @findtype '0xde1'
+  usetype '0xde1'
+  if @counttype '0xde1' 'any' 'backpack' < 10
+    headmsg '[Kindling Supply Low]' 55
+    pause 400
+    if @injournal 'You fail to ignite the campfire' 'system'
+      headmsg 'Failed to Light' 68
+      clearjournal
+      headmsg 'Retrying....' 49
+      pause 3100
+      replay
+    endif
+  endif
+  //Pause while waiting for fire to secure
+  while not @injournal 'Your campfire is now secure' 'system'
+  endwhile
+  clearjournal
+  pause 900
+  useobject 'atlas'
+  waitforgump 0x145999cb 15000
+  //EDIT NUMBER IN Location[] TO CHANGE LOCATION
+  replygump 0x145999cb Location[6]
+  //EDIT NUMBER IN [] ^^ *SEE LIST*
+  waitforgump 0x145999cb 15000
+  //small pause - seem to fail some if no pause
+  pause 300
+  replygump 0x145999cb 14
+  pause 300
+  if @injournal 'You have been in combat too recently' 'system'
+    settimer 'Combat_Pause' 0
+    headmsg '[Combat Cooldown: Pause 15sec]' 88
+    while timer 'Combat_Pause' < 15000
+      timermsg 'Combat_Pause' 88
+      pause 2000
+    endwhile
+    replygump 0x145999cb 14
+    clearjournal
+  endif
+  while not @injournal 'You hike to your destination' 'system'
+  endwhile
+  clearjournal
+  //playsound 'cdone.wav'
+  headmsg '[You have arrived]' 88
+endif
