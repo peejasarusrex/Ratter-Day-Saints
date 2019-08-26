@@ -1,0 +1,78 @@
+//---------Fishing Trainer 2.0---------//
+//Author: Peej                         //
+//Date: 8/26/2019                      //
+//Featuers: Fish using smart resource, //
+//           equip pole when broke     //        
+//Cuts up fish in bag to save space    //
+//+v1.0 - Initial Setup                //
+//+v2.0 - Added Config List            //
+//++++-Added no pole wait              //
+//-------------------------------------//
+if not @listexists 'Config'
+  @createlist 'Config'
+  @pushlist 'Config' 8300 // 0.Fishing Timer
+  @pushlist 'Config' 9000 // 1.Cut Timer
+  @pushlist 'Config' 10000 // 2.Pause - No Pole / Afk Alert
+  @pushlist 'Config' 90 // 3.AFK Alert Color
+  @pushlist 'Config' 58 // 4.No Pole Detect Color
+endif
+//if not @listexists 'afk'
+// @createlist 'afk'
+// @pushlist 'afk' 'on' //Alerts/Pauses on afk check
+// - - - - - - - - - - -// Place 'alert.wav' in
+// - - - - - - - - - - -// Steam/Sounds folder
+//endif
+if not timerexists 'fish_t'
+  createtimer 'fish_t'
+  settimer 'fish_t' Config[0]
+endif
+if not timerexists 'cut_t'
+  createtimer 'cut_t'
+endif
+if not listexists 'fish_l'
+  createlist 'fish_l'
+  pushlist   'fish_l' 0x1e1e // Raw Fish
+  pushlist 'fish_l' 0x9cc    // Raw Fish(large)
+endif
+while not dead
+  if counttype '0xdc0' 'any' 'backpack' == 0 and not @findlayer 'self' 2
+    while counttype '0xdc0' 'any' 'backpack' == 0 and not @findlayer 'self' 2
+      headmsg '[No Fishing Poles Detected]' Config[4]
+      //playsound 'nopole.wav'
+      pause Config[2]
+    endwhile
+  endif
+  if not @findlayer 'self' 2
+    pause 600
+    @findtype '0xdc0'
+    @equipitem 'found' 2
+    pause 800
+  endif
+  if timer 'fish_t' >= Config[0]
+    useobject! 'lefthand'
+    pause 600
+    if @inlist 'afk' 'on'
+      if @gumpexists '0x4bb1173a 15000'
+        while @gumpexists '0x4bb1173a 15000'
+          headmsg "[AFK Check]" Config[90]
+          playsound "alert.wav"
+          pause Config[2]
+        endwhile
+      endif
+    endif
+    waitfortarget 15000
+    target! 'self'
+    settimer 'fish_t' 0
+  endif
+  if timer 'cut_t' >= Config[1]
+    for 0 to 'fish_l'
+      if @findtype fish_l[]
+        @setalias 'fish_l' 'found'
+        usetype '0xf52'
+        waitfortarget 2000
+        target! 'fish_l'
+      endif
+    endfor
+    settimer 'cut_t' 0
+  endif
+endwhile
