@@ -1,0 +1,99 @@
+//Siv's Simple Magery Trainer
+//
+//Train Magery from 40-100 using Mana Drain,Energy Bolt,
+//Flame Strike, Summon Air Elemental
+//
+//Meditate, Heal, Resupply from storage shelf, eat food
+//Setup load out for regs in storage shelf gump, put stack of food in pack
+//-----------------------------------//
+//Description: Simple Magery Trainer //
+//Author: Siv                        //
+//Date: 23/AUG/2019                  //
+//Version: 1.1                       //
+//-----------------------------------//
+//
+//------------------//
+//    Get Shelf     //
+//------------------//
+//Comment out this section if using organizer agents
+if not @findalias 's_shelf'
+  headmsg 'Select storage shelf' 33
+  promptalias 's_shelf'
+endif
+//------------------//
+//    Get Food      //
+//------------------//
+if not @findalias 'food'
+  headmsg 'Target food stack!' 33
+  promptalias 'food'
+endif
+//------------------//
+//    Check Regs    //
+//------------------//
+//Replace the "waitforcontext" lines with organzier 'name' lines if no shelf
+//Count Spider Silk & Resupply
+if counttype 0xf8d 'any' 'backpack' < 5
+  waitforcontext 's_shelf' 1 15000
+endif
+//Count Black Pearl and Resupply
+if counttype 0xf7a 'any' 'backpack' < 5
+  waitforcontext 's_shelf' 1 15000
+endif
+//Count Mandrake Root and Resupply
+if counttype 0xf86 'any' 'backpack' < 5
+  waitforcontext 's_shelf' 1 15000
+endif
+//------------------//
+//    Mana Check    //
+//------------------//
+if mana < 50
+  pause 1000
+  useskill 'meditation'
+  while mana != maxmana
+  endwhile
+endif
+//------------------//
+//    Food Check    //
+//------------------//
+if not @buffexists 'gift of renewal'
+  if @findobject 'food'
+    useobject 'found'
+  else
+    unsetalias 'food'
+    headmsg 'You need to get a stack of food!'
+    stop
+  endif
+endif
+//------------------//
+//     Training     //
+//------------------//
+@cleartargetqueue
+if hits < 70
+  cast 'greater heal' 'self'
+elseif hits > 70 and skill 'magery' < 40
+  headmsg 'Train Magery to 40 or buy skill from NPC' 33
+  stop
+elseif hits > 70 and skill 'magery' < 60
+  cast 'mana drain' 'self'
+elseif hits > 70 and skill 'magery' < 70
+  cast 'energy bolt' 'self'
+  pause 1800
+elseif hits > 70 and skill 'magery' < 85
+  cast 'flame strike' 'self'
+  pause 2000
+elseif  hits > 70 and skill 'magery' < 100
+  cast 'summon air elemental'
+  pause 6250
+elseif hits > 70 and skill 'magery' == 100
+  headmsg 'Magery complete!'
+  stop
+endif
+//-------------------//
+// Release Followers //
+//-------------------//
+if followers > 1
+  msg 'an air elemental release'
+  pause 800
+endif
+//Very important pause! Remove at your own peril!
+pause 1000
