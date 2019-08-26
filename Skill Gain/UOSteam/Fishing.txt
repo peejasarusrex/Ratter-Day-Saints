@@ -1,0 +1,43 @@
+if not timerexists 'fish_t'
+  createtimer 'fish_t'
+  settimer 'fish_t' 8300
+endif
+if not timerexists 'cut_t'
+  createtimer 'cut_t'
+endif
+if not listexists 'fish_l'
+  createlist 'fish_l'
+  pushlist   'fish_l' 0x1e1e // Raw Fish
+  pushlist 'fish_l' 0x9cc    // Raw Fish(large)
+  endif
+while not dead
+  if not @findlayer 'self' 2
+    @findtype '0xdc0'
+    @equipitem 'found' 2
+  endif
+  if timer 'fish_t' >= 8300
+    useobject! 'lefthand'
+    pause 600
+    if @gumpexists '0x4bb1173a 15000'
+      while @gumpexists '0x4bb1173a 15000'
+        headmsg "[AFK Check]" 33
+        playsound "alert.wav"
+        pause 5000
+      endwhile
+    endif
+    waitfortarget 15000
+    target! 'self'
+    settimer 'fish_t' 0
+  endif
+  if timer 'cut_t' >= 9000
+    for 0 to 'fish_l'
+      if @findtype fish_l[]
+        @setalias 'fish_l' 'found'
+        usetype '0xf52'
+        waitfortarget 2000
+        target! 'fish_l'
+      endif
+    endfor
+    settimer 'cut_t' 0
+  endif
+endwhile
