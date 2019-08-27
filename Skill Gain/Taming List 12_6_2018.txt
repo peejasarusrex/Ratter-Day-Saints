@@ -1,0 +1,221 @@
+UO Outlands -12/6/2018
+Mounts by taming needed:
+
+25
+===
+Bird
+Cat
+Chicken
+Dog
+Goat
+Pig
+Sheep
+
+30
+===
+Cow
+Eagle
+Giant Rat
+Hind
+Mongbat
+
+35
+===
+Bison
+Bull
+Elk
+Great Hart
+Walrus
+
+40
+===
+Giant Bat
+Giant Frog
+Guar
+
+45
+===
+Cougar
+Wolf
+
+50
+===
+Black Bear
+Brown Bear
+Colossal Frog
+Fire Bat
+Horse (Mount)
+Llama (Mount)
+Monitor Hatchling
+Muck
+Pack Llama
+Primordial Whelp
+Rock Guar
+Shallow Water
+
+55
+===
+Aegis Rat
+Corpse Eater
+Familiar
+Flamehound
+Grizzly Bear
+Polar Bear
+Sand Crab
+Scorpion
+Swamp Spider
+
+60
+===
+Cave Bear
+Fire Ant
+Giant Spider
+Monitor
+Pack Horse
+Primordial
+Silverback
+
+65
+===
+Aegis Mongbat
+Carrion Beetle
+Desert Ostard (Mount)
+Embear
+Giant Scorpion
+Giant Swamp Slug
+Jaguar
+Searing Lizard
+
+70
+===
+Asp
+Cave Bat
+Scarab
+Searing Mantis
+
+75
+===
+Aegis Slime
+Chameleon
+Colossal Swamp Slug
+Drake Welp
+Fire Beetle
+Forest Ostard (Mount)
+Imp
+Trapdoor Spider
+
+80
+===
+Adder
+Antlion
+Bullvore
+Deep Crawler
+Devilbat
+Fire Salamander
+Searing Imp
+Wolfhound
+
+85
+===
+Anaconda
+Blood Ape
+Dragon Welp
+Drake
+Tundra Ostard (Mount)
+
+90
+===
+Flame Purger
+Giant Poison Dart Frog
+Hellhound
+Husk Crab
+Sand Crawler
+Skulker
+Stinger
+Vampire Bat
+
+95
+===
+Aegis Imp
+Dragon
+Frenzied Ostard (Mount)
+Giant Trapdoor Spider
+Molten Mongbat
+Wyvern Hatchling
+
+100
+===
+Aegis Scorpion
+Air Drake
+Artic Bullvore
+Army Ant
+Black Widow
+Bloodwolf
+Colossal Poison Dart Frog
+Devourer Beetle
+Fire Crawler
+Komodo
+Nightmare (Mount)
+Reef Serpent
+Rime Guard
+Shade Wolf
+Skeletal Dragon
+Snowdrift
+Tidal Mantis
+Water Drake
+Wisp
+
+105
+===
+Aegis Asp
+Aegis Whelp
+Ankheg
+Arboreal Wisp
+Dusk Drake
+Earth Drake
+Eldritch Drake
+Ember Drake
+Swamp Drake
+Wyvern
+
+110
+===
+Aegis Leech
+Air Dragon
+Blood Drake
+Blood Scorpion
+Bonfire Wisp
+Corpse Purger
+Giant Black Widow
+Nightslayer
+Smoke Drake
+Sphinx
+Water Dragon
+
+115
+===
+Blood Courser (Mount)
+Blood Hunter
+Blood Serpent
+Drowned Dragon
+Dusk Dragon
+Earth Dragon
+Eldritch Dragon
+Ember Dragon
+Swamp Dragon
+Temple Guardian
+Volt Wisp
+
+120
+===
+Black Cat
+Blightmare (Mount)
+Blood Dragon
+Bloodworm
+Colossal Black Wido
+Colossal Trapdoor Spider
+Fortress Beetle
+Otyugh
+Phoenix
+Searing Bullvore
+Smoke Dragon
