@@ -1,46 +1,12 @@
-/////////////////////////////////////////////
-// UO Steam Skill Trainer
-// for Outlands
-// by Jewele
-// 
-// Version 2.0
-// -----------
-// Complete rewrite
-//
-// UOSTEAM COPY-PASTE BELOW THIS LINE
-/////////////////////////////////////////////
-
-sysmsg "Trainer Script - Lockpicking" 88
-sysmsg "Version 2.0" 88
-
-@useobject 'backpack'
-pause 1000
-
-while not dead
-
-    //
-    // Check we have picks
-    //
-    if not @findtype '0x14fd' 'any' 'backpack'
-        headmsg 'No lockpicks!' '55' 'self'
-        stop
-    endif
-    @clearjournal
-    //
-    // Use trainer box
-    //
-    @findtype '0xe80' 'any' 'backpack'
-    @useobject 'found'
-    removetimer 'pick'
-    createtimer 'pick'
-	waitforgump 'found' 5000
-    replygump 'found' 4
-    // max 10s attempt, in case of server lag
-    while timer 'pick' < 10000
-        if @injournal 'progress' 'system'
-            break
-        endif
-        pause 100
-    endwhile
-
-endwhile
+//LockPicking Macro
+if not findalias 'picking_box'
+  headmsg 'Target training box!' 55
+  promptalias 'picking_box'
+endif
+if @findtype 0x14fd 'any' 'backpack'
+  autotargetobject 'picking_box'
+  usetype 0x14fd 'any' 'backpack'
+  pause 3500
+else
+  stop
+endif

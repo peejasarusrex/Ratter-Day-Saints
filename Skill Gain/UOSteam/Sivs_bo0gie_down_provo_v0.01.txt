@@ -1,0 +1,21 @@
+//Siv' bo0gie down provo
+// set for snakes at prev zoo
+
+useskill 'provocation'
+pause 600
+if @injournal 'What instrument shall you' 'system'
+//Lutes 
+ targettype! 0xeb3 'any'
+  pause 600
+  targettype! 0x15
+else
+  targettype! 0x15
+endif
+pause 600
+target 'self'
+if @injournal 'music succeeds' 'system'
+  pause 6000
+  clearjournal
+endif
+clearjournal
+pause 6000

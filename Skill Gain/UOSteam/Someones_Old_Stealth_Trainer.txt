@@ -1,0 +1,22 @@
+if not dead and not hidden
+  useskill 'Hiding'
+  useobject 0x4042fe8a
+  pause 11000
+else
+  if not dead and skill 'Hiding' < 80
+    useskill 'Hiding'
+    pause 11000
+  else
+    if not dead and skill 'stealth' < 100
+      useskill 'Stealth'
+      pause 11000
+    else
+      if not dead and skill 'Hiding' < 100
+        useskill 'Hiding'
+        pause 11000
+      else
+        stop
+      endif
+    endif
+  endif
+endif
