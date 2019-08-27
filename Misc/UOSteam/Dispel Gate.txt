@@ -1,0 +1,6 @@
+//Auto Dispel any gate within 11 tiles
+if @findtype '0xf6c'  'any' 'ground' 1 11
+  cast 'Dispel Field'
+  waitfortarget 2000
+  target! 'found'
+endif
