@@ -1,0 +1,28 @@
+//Siv's Simple Gate Macro
+//Change gump respose for public gates to your preference
+//10 - Andaria
+//11 - Cambria 11
+//12 - HSB
+//13 - Outpost
+//14 - Prevalia
+//15 - Terran
+//16 - Shelter Island
+//17 - Corpse Creek
+//18 - The Arena (Default)
+if @findtype 0xf6c 'any' 'ground' 1 1
+  headmsg 'Got a gate!' 55
+  useobject! 'found'
+  pause 500
+endif
+if gumpexists '0xe0e675b8'
+  headmsg 'Public Moongate' 55
+  waitforgump 0xe0e675b8 1000
+  //Set public gate preference here
+  replygump 0xe0e675b8 18
+  waitforgump 0xe0e675b8 1000
+  replygump 0xe0e675b8 2
+else
+  headmsg 'Private Moongate' 55
+  waitforgump 0xe866525f 1000
+  replygump 0xe866525f 2
+endif
