@@ -2,23 +2,34 @@
 //Name: Dungeon Chest Locator                  //
 //Author: Peej                                 //
 //Date: 8/29/2019                              //
-//Verson:2.0                                   //
+//Verson:2.1                                   //
 //Description: Finds chest location in Dungeon //
 //will let you know if its locked or unlocked  //
 //will place "headmsg" at location of chest    //
 //**Adds unlocked chest to ignore list         //
+//**Default Range is set at 15                 //
+//**Config list - allows you to change vaules  //
+//               of colors / ranges easily     //
 //---------------------------------------------//
-if @findtype '0xe41' 'any' 'ground' 'any' 10
-  headmsg '[Chest Found]' 88 'found'
+if not @listexists 'Config'
+  createlist 'Config'
+  pushlist 'Config' 15 // Default Search Range
+  pushlist 'Config' 88 // Chest Found Color
+  pushlist 'Config' 59 // Chest Locked Color
+  pushlist 'Config' 56 // Chest Unlocked Color
+  pushlist 'Config' 55 // No Chest Found Color
+endif
+if @findtype '0xe41' 'any' 'ground' 'any' Config[0]
+  headmsg '[Chest Found]' Config[1] 'found'
   clickobject 'found'
   if @injournal 'locked and trapped' 'system'
-    headmsg '[CHEST LOCKED]' 59
+    headmsg '[CHEST LOCKED]' Config[2]
     clearjournal
   else
-    headmsg '[CHEST UNLOCKED]' 56
+    headmsg '[CHEST UNLOCKED]' Config[3]
     @ignoreobject 'found'
     clearjournal
   endif
 else
-  headmsg '[No Chest Found]' 55
+  headmsg '[No Chest Found]' Config[4]
 endif
