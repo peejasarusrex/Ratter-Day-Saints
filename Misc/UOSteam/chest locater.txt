@@ -1,0 +1,10 @@
+//----Dungeon Chest----//
+//+Clicks Dungeon Chest 
+//+will tell if locked or unlocked
+//+msg at exact location of chest in dungeon
+//
+if findtype 0xe41 'any' 'ground' 10
+headmsg '[Chest Found]' 88 'found'
+clickobject 'found'
+@ignoreobject 'found'
+endif
