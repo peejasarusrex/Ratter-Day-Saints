@@ -1,0 +1,24 @@
+//---------------------------------------------//
+//Name: Dungeon Chest Locator                  //
+//Author: Peej                                 //
+//Date: 8/29/2019                              //
+//Verson:2.0                                   //
+//Description: Finds chest location in Dungeon //
+//will let you know if its locked or unlocked  //
+//will place "headmsg" at location of chest    //
+//**Adds unlocked chest to ignore list         //
+//---------------------------------------------//
+if @findtype '0xe41' 'any' 'ground' 'any' 10
+  headmsg '[Chest Found]' 88 'found'
+  clickobject 'found'
+  if @injournal 'locked and trapped' 'system'
+    headmsg '[CHEST LOCKED]' 59
+    clearjournal
+  else
+    headmsg '[CHEST UNLOCKED]' 56
+    @ignoreobject 'found'
+    clearjournal
+  endif
+else
+  headmsg '[No Chest Found]' 55
+endif
