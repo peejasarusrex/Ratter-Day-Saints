@@ -1,0 +1,160 @@
+//
+// If you are reading this you will self-destruct in 5 seconds...
+// 
+
+@clearignorelist
+ignoreobject 'Self'
+
+@removelist 'levels'
+@createlist 'levels'
+
+//
+// Vendor types (male or female) 
+// 
+@clearlist 'VendorTypes'
+@createlist 'VendorTypes'
+pushlist 'VendorTypes' 0x190
+pushlist 'VendorTypes' 0x191
+
+//
+// List of items you might want for 999
+//
+@createlist 'Rares'
+@clearlist 'Rares'
+@pushlist! 'Rares' 0x227A // ss
+@pushlist! 'Rares' 0x240  // phyl
+@pushlist! 'Rares' 0x5740 // ball
+@pushlist! 'Rares' 0x7161 // dye
+@pushlist! 'Rares' 0xEFC  // extract
+@pushlist! 'Rares' oxEFE  // dye
+@pushlist! 'Rares' 0xEFF  // unsure
+@pushlist! 'Rares' 0xF02  // dye
+@pushlist! 'Rares' 0xF03  // dye
+@pushlist! 'Rares' 0xF91  // core
+@pushlist! 'Rares' 0x42BF  // MCD
+@pushlist! 'Rares' 0xa8c6  // Link
+@pushlist! 'Rares' 0x72a4  // research
+@pushlist! 'Rares' 0x14ef  // deed
+@pushlist! 'Rares' 0x175d  // cloth
+
+//
+// Initialize ContainerTypes
+//
+@clearlist 'ContainerTypes'
+@createlist 'ContainerTypes'
+@pushlist! 'ContainerTypes' 0xe75 // Backpack
+@pushlist! 'ContainerTypes' 0xe76 // Bag
+@pushlist! 'ContainerTypes' 0xe80 // Lesser Paragon Chest
+@pushlist! 'ContainerTypes' 0xe79 // Pouch
+@pushlist! 'ContainerTypes' 0x9aa // Wooden Box
+@pushlist! 'ContainerTypes' 0xe42 // Wooden Chest
+@pushlist! 'ContainerTypes' 0xe40 // container
+//
+// Container IDs I pulled from resource files, not going to name them all
+//
+@pushlist! 'ContainerTypes' 0xE3C
+@pushlist! 'ContainerTypes' 0xE3D
+@pushlist! 'ContainerTypes' 0xE3E
+@pushlist! 'ContainerTypes' 0xE3F
+@pushlist! 'ContainerTypes' 0xE40
+@pushlist! 'ContainerTypes' 0xE41
+@pushlist! 'ContainerTypes' 0xE42
+@pushlist! 'ContainerTypes' 0xE43
+@pushlist! 'ContainerTypes' 0xE7C
+@pushlist! 'ContainerTypes' 0xE7D
+@pushlist! 'ContainerTypes' 0xE7E
+@pushlist! 'ContainerTypes' 0xE7F
+@pushlist! 'ContainerTypes' 0x09AA
+@pushlist! 'ContainerTypes' 0x09AB
+@pushlist! 'ContainerTypes' 0x09A9
+
+//
+// Push all vendors into containers
+//
+@clearlist 'containers'
+@createlist 'containers'
+for 0 to 'VendorTypes'
+    while @findtype VendorTypes[]
+        sysmsg "Adding vendor" 55
+        @pushlist! 'containers' 'found'
+        @ignoreobject 'found'
+    endwhile
+endfor
+
+//
+// While we have containers to search
+//
+while list 'containers' > 0
+    //
+    // Open it
+    //
+    useobject 'containers[0]'
+    pause 1000
+    //
+    // Initialize buy list
+    //
+    @clearlist 'buy'
+    @createlist 'buy'
+    //
+    // Check for rares
+    //
+    for 0 to 'Rares'
+        while @findtype 'Rares[]' 'Any' 'containers[0]'
+            headmsg "found rare"
+            @pushlist! 'buy' 'found'
+            @ignoreobject 'found'
+        endwhile
+    endfor
+    //
+    // Check for containers
+    //
+    if list 'levels' < 2
+        for 0 to 'ContainerTypes'
+            while @findtype 'ContainerTypes[]' 'Any' 'containers[0]'
+                pushlist! 'buy' 'found' 'back'
+                pushlist! 'containers' 'found' 'back'
+                @ignoreobject 'found'
+            endwhile
+        endfor
+        pushlist 'levels' '1'
+    endif
+    //
+    // Attempt to buy
+    //
+    for 0 to 'buy'
+        //
+        // buy
+        //
+        waitforcontext 'buy[]' 0 1000
+        //
+        // Wait for buy Gump
+        // ~ items not for sale will time out waiting for gump
+        //
+        waitforgump 0xfece3c0f 2000
+        if @gumpexists 0xfece3c0f
+            // Let player see
+            pause 500
+            // Check buy Gump for 999
+            if @ingump 0xfece3c0f '999' and not @ingump 0xfece3c0f ',999' 
+                headmsg "Found 999 priced Rare/Container" 66
+                playsound 'cymbals.wav'
+                sysmsg "buy item, or dismiss to continue" 55
+                // Wait for player to buy or dismiss
+                while @gumpexists 0xfece3c0f
+                    pause 1000
+                endwhile
+                sysmsg "Continuing..." 55
+            else
+                // Dismiss
+                replygump 0xfece3c0f 0
+                pause 500
+            endif
+        endif
+    endfor
+    //
+    // Done with this container
+    //
+    poplist 'containers' 'front'
+endwhile
+
+headmsg "DONE!" 22
