@@ -1,0 +1,85 @@
+clearjournal
+unsetalias 'rune'
+if not findalias 'banker'
+  sysmsg "Select the banker at your bank or BOX if running from home" 88
+  promptalias 'banker'
+endif
+if @findobject 'banker'
+  msg 'bank'
+  pause 600
+  useobject! '0x426fe119'
+  pause 600
+  useobject! '0x425c662c'
+  pause 600
+  organizer 'drop'
+  while organizing
+  endwhile
+  organizer 'regs'
+  while organizing
+  endwhile
+  if findtype '0x1f14' '0' '0x426fe119'
+    setalias 'rune' 'found'
+    pause 200
+    autotargetobject 'rune'
+    cast 'recall'
+    pause 5000
+  else
+    msg 'all done'
+    stop
+  endif
+endif
+while not @injournal 'You do not see any' 'system'
+  if @findtype '0xe86' 'any' 'backpack'
+    @setalias 'Pickaxes' 'Found'
+  endif
+  if not @findlayer 'self' 1
+    equipitem 'Pickaxes' 1
+    pause 600
+  endif
+  useobject 'righthand'
+  waitfortarget 2000
+  target! 'self'
+  //Check AFK Gump (Peej/Tucan)
+  //Stops doing anything when the gump is up, pauses 5 seconds after gump is gone.
+  if @gumpexists '0x4bb1173a 15000'
+    headmsg "[AFK Check]" 33
+    playsound "alert.wav"
+    useskill 'hiding'
+    //Added 2 minute pause
+    while @gumpexists '0x4bb1173a 15000'
+      pause 5000
+    endwhile
+  endif
+  while diffhits > 1
+    headmsg "Something is hurting me!" 55
+    @canceltarget
+    cast "Recall"
+    waitfortarget 5000
+    target! '0x4042ed74'
+    playsound 'buzzer.wav'
+    pause 5000
+    cast 'Greater Heal'
+    waitfortarget 5000
+    target! 'self'
+    continue
+  endwhile
+  if diffweight < 30
+    @clearlist 'moves'
+    break
+    continue
+  endif
+endwhile
+if not @findobject 'banker'
+  // mana to recall
+  while mana < 15
+    useskill 'meditation'
+    pause 6000
+  endwhile
+  // recall
+  @canceltarget
+  cast "Recall"
+  waitfortarget 5000
+  target! '0x4042ed74'
+  pause 2500
+endif
+ignoreobject 'rune'
