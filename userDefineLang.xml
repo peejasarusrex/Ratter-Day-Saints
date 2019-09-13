@@ -1,0 +1,64 @@
+<NotepadPlus>
+    <UserLang name="UOSteam" ext="" udlVersion="2.1">
+        <Settings>
+            <Global caseIgnored="no" allowFoldOfComments="no" foldCompact="yes" forcePureLC="0" decimalSeparator="0" />
+            <Prefix Keywords1="no" Keywords2="yes" Keywords3="yes" Keywords4="no" Keywords5="no" Keywords6="no" Keywords7="no" Keywords8="no" />
+        </Settings>
+        <KeywordLists>
+            <Keywords name="Comments"></Keywords>
+            <Keywords name="Numbers, prefix1"></Keywords>
+            <Keywords name="Numbers, prefix2"></Keywords>
+            <Keywords name="Numbers, extras1"></Keywords>
+            <Keywords name="Numbers, extras2"></Keywords>
+            <Keywords name="Numbers, suffix1"></Keywords>
+            <Keywords name="Numbers, suffix2"></Keywords>
+            <Keywords name="Numbers, range"></Keywords>
+            <Keywords name="Operators1"></Keywords>
+            <Keywords name="Operators2"></Keywords>
+            <Keywords name="Folders in code1, open">while</Keywords>
+            <Keywords name="Folders in code1, middle"></Keywords>
+            <Keywords name="Folders in code1, close">endwhile</Keywords>
+            <Keywords name="Folders in code2, open">if</Keywords>
+            <Keywords name="Folders in code2, middle">elseif else</Keywords>
+            <Keywords name="Folders in code2, close">endif</Keywords>
+            <Keywords name="Folders in comment, open">for</Keywords>
+            <Keywords name="Folders in comment, middle"></Keywords>
+            <Keywords name="Folders in comment, close">endfor</Keywords>
+            <Keywords name="Keywords1">and&#x000D;&#x000A;break&#x000D;&#x000A;not&#x000D;&#x000A;or&#x000D;&#x000A;pause&#x000D;&#x000A;replay&#x000D;&#x000A;stop&#x000D;&#x000A;to&#x000D;&#x000A;waitforcontext&#x000D;&#x000A;waitforgump&#x000D;&#x000A;waitforjournal&#x000D;&#x000A;waitforprompt&#x000D;&#x000A;waitforproperties&#x000D;&#x000A;waitfortarget&#x000D;&#x000A;while</Keywords>
+            <Keywords name="Keywords2">addfriend&#x000D;&#x000A;allymsg&#x000D;&#x000A;amount&#x000D;&#x000A;attack&#x000D;&#x000A;autocolorpick&#x000D;&#x000A;autoloot&#x000D;&#x000A;autotargetghost&#x000D;&#x000A;autotargetghost!&#x000D;&#x000A;autotargetground&#x000D;&#x000A;autotargetground!&#x000D;&#x000A;autotargetlast&#x000D;&#x000A;autotargetlast!&#x000D;&#x000A;autotargetobject&#x000D;&#x000A;autotargetobject!&#x000D;&#x000A;autotargetself&#x000D;&#x000A;autotargetself!&#x000D;&#x000A;autotargettile&#x000D;&#x000A;autotargettile!&#x000D;&#x000A;autotargettileoffset&#x000D;&#x000A;addfriend&#x000D;&#x000A;allymsg&#x000D;&#x000A;amount&#x000D;&#x000A;attack&#x000D;&#x000A;autocolorpick&#x000D;&#x000A;autoloot&#x000D;&#x000A;autotargetghost&#x000D;&#x000A;autotargetground&#x000D;&#x000A;autotargetlast&#x000D;&#x000A;autotargetobject&#x000D;&#x000A;autotargetself&#x000D;&#x000A;autotargettile&#x000D;&#x000A;autotargettileoffset&#x000D;&#x000A;autotargettilerelative&#x000D;&#x000A;autotargettype&#x000D;&#x000A;bandageself&#x000D;&#x000A;bigheal&#x000D;&#x000A;buffexists&#x000D;&#x000A;buy&#x000D;&#x000A;cancelautotarget&#x000D;&#x000A;cancelprompt&#x000D;&#x000A;canceltarget&#x000D;&#x000A;cast&#x000D;&#x000A;chatmsg&#x000D;&#x000A;chivalryheal&#x000D;&#x000A;clearbuy&#x000D;&#x000A;clearhands&#x000D;&#x000A;clearignorelist&#x000D;&#x000A;clearjournal&#x000D;&#x000A;clearlist&#x000D;&#x000A;clearsell&#x000D;&#x000A;cleartargetqueue&#x000D;&#x000A;clearuseonce&#x000D;&#x000A;clearusequeue&#x000D;&#x000A;clickobject&#x000D;&#x000A;cold&#x000D;&#x000A;color&#x000D;&#x000A;contents&#x000D;&#x000A;contextmenu&#x000D;&#x000A;counter&#x000D;&#x000A;counttype&#x000D;&#x000A;counttypeground&#x000D;&#x000A;createlist&#x000D;&#x000A;createtimer&#x000D;&#x000A;dead&#x000D;&#x000A;dex&#x000D;&#x000A;diffhits&#x000D;&#x000A;diffweight&#x000D;&#x000A;distance&#x000D;&#x000A;dress&#x000D;&#x000A;dressconfig&#x000D;&#x000A;dressing&#x000D;&#x000A;emotemsg&#x000D;&#x000A;energy&#x000D;&#x000A;equipitem&#x000D;&#x000A;equipwand&#x000D;&#x000A;feed&#x000D;&#x000A;findalias&#x000D;&#x000A;findlayer&#x000D;&#x000A;findobject&#x000D;&#x000A;findtype&#x000D;&#x000A;findwand&#x000D;&#x000A;fire&#x000D;&#x000A;fly&#x000D;&#x000A;followers&#x000D;&#x000A;getenemy&#x000D;&#x000A;getfriend&#x000D;&#x000A;gold&#x000D;&#x000A;graphic&#x000D;&#x000A;guildbutton&#x000D;&#x000A;guildmsg&#x000D;&#x000A;gumpexists&#x000D;&#x000A;headmsg&#x000D;&#x000A;helpbutton&#x000D;&#x000A;hidden&#x000D;&#x000A;hidden&#x000D;&#x000A;hits&#x000D;&#x000A;hotkeys&#x000D;&#x000A;ignoreobject&#x000D;&#x000A;infriendlist&#x000D;&#x000A;ingump&#x000D;&#x000A;injournal&#x000D;&#x000A;inlist&#x000D;&#x000A;inparty&#x000D;&#x000A;inrange&#x000D;&#x000A;inregion&#x000D;&#x000A;int&#x000D;&#x000A;list&#x000D;&#x000A;listexists&#x000D;&#x000A;logoutbutton&#x000D;&#x000A;lucj&#x000D;&#x000A;mana&#x000D;&#x000A;mapuo&#x000D;&#x000A;maxfollowers&#x000D;&#x000A;maxhits&#x000D;&#x000A;maxmana&#x000D;&#x000A;maxstam&#x000D;&#x000A;maxweight&#x000D;&#x000A;messagebox&#x000D;&#x000A;miniheal&#x000D;&#x000A;mounted&#x000D;&#x000A;moveitem&#x000D;&#x000A;moveitemoffset&#x000D;&#x000A;movetype&#x000D;&#x000A;movetypeoffset&#x000D;&#x000A;msg&#x000D;&#x000A;organizer&#x000D;&#x000A;organizing&#x000D;&#x000A;paperdoll&#x000D;&#x000A;paralyzed&#x000D;&#x000A;partymsg&#x000D;&#x000A;physical&#x000D;&#x000A;ping&#x000D;&#x000A;playmacro&#x000D;&#x000A;playsound&#x000D;&#x000A;poison&#x000D;&#x000A;poisoned&#x000D;&#x000A;poplist&#x000D;&#x000A;promptalias&#x000D;&#x000A;promptmsg&#x000D;&#x000A;property&#x000D;&#x000A;pushlist&#x000D;&#x000A;questbutton&#x000D;&#x000A;removefriend&#x000D;&#x000A;removetimer&#x000D;&#x000A;rename&#x000D;&#x000A;replygump&#x000D;&#x000A;resync&#x000D;&#x000A;run&#x000D;&#x000A;sell&#x000D;&#x000A;serial&#x000D;&#x000A;setability&#x000D;&#x000A;setalias&#x000D;&#x000A;setskill&#x000D;&#x000A;settimer&#x000D;&#x000A;shownames&#x000D;&#x000A;skill&#x000D;&#x000A;skillstate&#x000D;&#x000A;snapshot&#x000D;&#x000A;stam&#x000D;&#x000A;str&#x000D;&#x000A;sysmsg&#x000D;&#x000A;target&#x000D;&#x000A;targetexists&#x000D;&#x000A;targetground&#x000D;&#x000A;targettile&#x000D;&#x000A;targettileoffset&#x000D;&#x000A;targettilerelative&#x000D;&#x000A;targettype&#x000D;&#x000A;timer&#x000D;&#x000A;timerexists&#x000D;&#x000A;timermsg&#x000D;&#x000A;tithingpoints&#x000D;&#x000A;toggleautoloot&#x000D;&#x000A;togglehands&#x000D;&#x000A;togglemounted&#x000D;&#x000A;togglescavenger&#x000D;&#x000A;turn&#x000D;&#x000A;undress&#x000D;&#x000A;unsetalias&#x000D;&#x000A;useobject&#x000D;&#x000A;useonce&#x000D;&#x000A;usequeue&#x000D;&#x000A;useskill&#x000D;&#x000A;usetype&#x000D;&#x000A;virtue&#x000D;&#x000A;waitingfortarget&#x000D;&#x000A;walk&#x000D;&#x000A;war&#x000D;&#x000A;warmode&#x000D;&#x000A;weight&#x000D;&#x000A;where&#x000D;&#x000A;whispermsg&#x000D;&#x000A;x&#x000D;&#x000A;y&#x000D;&#x000A;yellmsg&#x000D;&#x000A;yellowhits&#x000D;&#x000A;z</Keywords>
+            <Keywords name="Keywords3">@</Keywords>
+            <Keywords name="Keywords4"></Keywords>
+            <Keywords name="Keywords5"></Keywords>
+            <Keywords name="Keywords6"></Keywords>
+            <Keywords name="Keywords7"></Keywords>
+            <Keywords name="Keywords8"></Keywords>
+            <Keywords name="Delimiters">00&apos; 01 02&apos; 03// 04 05((EOL)) 06&quot; 07 08&quot; 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23</Keywords>
+        </KeywordLists>
+        <Styles>
+            <WordsStyle name="DEFAULT" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="COMMENTS" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="LINE COMMENTS" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="NUMBERS" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="KEYWORDS1" fgColor="0000FF" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="KEYWORDS2" fgColor="800000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="KEYWORDS3" fgColor="800000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="KEYWORDS4" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="KEYWORDS5" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="KEYWORDS6" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="KEYWORDS7" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="KEYWORDS8" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="OPERATORS" fgColor="C0C0C0" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="FOLDER IN CODE1" fgColor="0000FF" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="FOLDER IN CODE2" fgColor="0000FF" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="FOLDER IN COMMENT" fgColor="0000FF" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS1" fgColor="008000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS2" fgColor="808080" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS3" fgColor="008000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS4" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS5" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS6" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS7" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+            <WordsStyle name="DELIMITERS8" fgColor="000000" bgColor="FFFFFF" fontName="" fontStyle="0" nesting="0" />
+        </Styles>
+    </UserLang>
+</NotepadPlus>
