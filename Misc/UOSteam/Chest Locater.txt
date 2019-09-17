@@ -1,0 +1,60 @@
+//---------------------------------------------//
+//Name: Dungeon Chest Locator                  //
+//Author: Peej                                 //
+//Date: 9/17/2019                              //
+//Verson:4.1                                   //
+//Description: Finds chest location in Dungeon //
+//will let you know if its locked or unlocked  //
+//will place "headmsg" at location of chest    //
+//**Adds unlocked chest to ignore list         //
+//**Default Range is set at 15                 //
+//**Config list - allows you to change vaules  //
+//               of colors / ranges easily     //
+//**Clear Ignore List timer                    //
+//---------------------------------------------//
+@removelist 'Config'
+if not timerexists 'clear_t'
+  createtimer 'clear_t'
+endif
+if not @listexists 'Config'
+  createlist 'Config'
+  pushlist 'Config' 15 // Search Range
+  pushlist 'Config' 88 // Chest Found Color
+  pushlist 'Config' 59 // Chest Locked Color
+  pushlist 'Config' 56 // Chest Unlocked Color
+  pushlist 'Config' 55 // No Chest Found Color
+  pushlist 'Config' 1800000 // Clear Ignore Timer default: 30min
+endif
+if not 'listexists' 'dungeon_chest'
+  createlist 'dungeon_chest'
+  @pushlist 'dungeon_chest' 0x9ab // metal chest - facing south
+  @pushlist 'dungeon_chest' 0xe40 // metal chest - facing east (gold trim)
+  @pushlist 'dungeon_chest' 0xe41 // metal chest - facing south (gold trim)
+  @pushlist 'dungeon_chest' 0xe42 // wooden chest - facing east
+  @pushlist 'dungeon_chest' 0xe43 // wooden chest - facing south
+  @pushlist 'dungeon_chest' 0xe7C // metal chest - facing east
+endif
+if timer 'clear_t' >= Config[5]
+  clearignorelist
+  settimer 'clear_t' 0
+endif
+for 0 in 'dungeon_chest'
+  if @findtype dungeon_chest[] 'any' 'world' 'any' Config[0]
+    @setalias 'chest' 'found'
+    headmsg '[Chest Found]' Config[1] 'found'
+    clickobject 'found'
+    pause 600
+    break
+  endif
+endfor
+if @injournal 'dungeon chest' 'system' and @injournal 'locked and trapped' 'system'
+  headmsg '[CHEST LOCKED]' Config[2]
+  clearjournal
+elseif @injournal 'dungeon chest' 'system'
+  headmsg '[CHEST UNLOCKED]' Config[3]
+  ignoreobject 'found'
+  @unsetalias 'chest'
+  clearjournal
+else
+  headmsg '[No Chest Found]' Config[4]
+endif
