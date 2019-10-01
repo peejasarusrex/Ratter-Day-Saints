@@ -1,0 +1,332 @@
+//-----------------------------------------------------//
+//Name: Auto Decoder                                   //
+//Author: P33j / decode section (not sure)             //
+//Date: 9/30/2019                                      //
+//Use: Leave a char afk running script to decode       //
+//any research material placed in selected box         //
+//Once decoded move back into selected box             //
+// +Useful for guilds to drop notes to be decoded      //
+//Notes- Only need to select one box for all resources //
+//Future Release++ sort into selected bags             //
+//decode by bags                                       //
+//**dconfig list allows you to set hue/timer values    //
+//-----------------------------------------------------//
+if not @listexists 'dconfig'
+  createlist 'dconfig'
+  pushlist 'dconfig' 88 //Headmsg Color
+  pushlist 'dconfig' 91// msg Color
+  pushlist 'dconfig' 8000 // Decoding Msg Timer
+endif
+@clearignorelist
+if not @findalias 'searchbox'
+  headmsg '[select SEARCH box]' dconfig[0]
+  promptalias 'searchbox'
+endif
+if not timerexists 'decoding_t'
+  createtimer 'decoding_t'
+endif
+useobject 'searchbox'
+useobject 'backpack'
+while not dead 'self'
+  while not @findtype '0x72a4' 'any' 'searchbox' 'any' 'any'
+  endwhile
+  if @findtype '0x72a4' 'any' 'searchbox' 'any' 'any'
+    pause 2000
+    while @findtype '0x72a4' 'any' 'searchbox' 'any' 'any'
+      movetype '0x72a4' 'searchbox' 'backpack'
+    endwhile
+    msg 'Decoding...Please Wait' dconfig[1]
+    pause 1000
+  endif
+  headmsg "Decoding research materials." '99'
+  while @findtype '0x72a4' 'any' 'backpack'
+    if timer 'decoding_t' >= dconfig[2]
+      msg '..:Decoding:..' dconfig[1]
+      settimer 'decoding_t' 0
+    endif
+    usetype "0x72a4"
+    //5,0,0
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 5
+    //4,1,0
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 5
+    //4,0,1
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 5
+    //0,5,0
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 5
+    //0,4,1
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 5
+    //1,4,0
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 5
+    //0,0,5
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 5
+    //1,0,4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 5
+    //0,1,4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 5
+    //3,2,0
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 5
+    //3,0,2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 5
+    //3,1,1
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 5
+    //2,3,0
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 5
+    //1,3,1
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 5
+    //0,3,2
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 5
+    //2,0,3
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 5
+    //0,2,3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 5
+    //1,1,3
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 5
+    //2,2,1
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 5
+    //2,1,2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 5
+    //1,2,2
+    pause 500
+    replygump 0x2a496f8c 2
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 3
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 4
+    pause 500
+    replygump 0x2a496f8c 5
+  endwhile
+  pause 1000
+  // Place Decoded Items Back in Chest
+  if @findtype '0x6bdc' 'any' 'backpack' 'any'
+    pause 2000
+    while @findtype '0x6bdc' 'any' 'backpack' 'any'
+      movetype '0x6bdc' 'backpack' 'searchbox'
+    endwhile
+    msg 'All Pages Dropped in Box' dconfig[1]
+    pause 1000
+  endif
+endwhile
