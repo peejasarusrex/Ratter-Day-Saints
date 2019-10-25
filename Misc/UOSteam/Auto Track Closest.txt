@@ -1,0 +1,114 @@
+//                      Tracking Macro                       //
+//Author: Peej                                               //
+//Date: 10/25/19                                             //
+//Use: Set Tracking to Hunt chosen mob                       //
+//   use chart below to determine tacking target             //
+//  Edit Line 26 to change tracked target                    //
+//  Can update list value and hit play to change tracked mob //
+//  Will Always track using "Always Get Closest"             //
+//                                                           //
+// List of Target Values                                     //
+//0- Townsfolk                                               //
+// 1- All Players                                            //
+// 2- All Hostile                                            //
+// 3- Enemy Players                                          //
+// 4- Murderers                                              //
+// 5- Criminal                                               //
+// 6- Innocent                                               //
+// 7- Friendly                                               //
+// 8- Aggressive                                             //
+// 9- Passive Creatures                                      //
+//-----------------------------------------------------------//
+@clearjournal
+@removelist 'Tracking'
+createlist 'Tracking'
+// Edit this Value Default: 8
+pushlist 'Tracking' 3
+// Edit value above this line
+useskill 'Tracking'
+pause 500
+if @inlist 'Tracking' 0
+  while not @injournal 'townsfolk' 'system'
+    replygump 0xfe5c638b 8
+    waitforgump 0xfe5c638b 15000
+    pause 100
+  endwhile
+  pause 400
+elseif @inlist 'Tracking' 1
+  while not @injournal 'all players' 'system'
+    replygump 0xfe5c638b 8
+    waitforgump 0xfe5c638b 15000
+    pause 100
+  endwhile
+  pause 400
+elseif @inlist 'Tracking' 2
+  while not @injournal 'all hostile' 'system'
+    replygump 0xfe5c638b 8
+    waitforgump 0xfe5c638b 15000
+    pause 100
+  endwhile
+  pause 400
+elseif @inlist 'Tracking' 3
+  while not @injournal 'enemy players' 'system'
+    replygump 0xfe5c638b 8
+    waitforgump 0xfe5c638b 15000
+    pause 100
+  endwhile
+  pause 400
+elseif @inlist 'Tracking' 4
+  while not @injournal 'murderer players' 'system'
+    replygump 0xfe5c638b 8
+    waitforgump 0xfe5c638b 15000
+    pause 100
+  endwhile
+  pause 400
+elseif @inlist 'Tracking' 5
+  while not @injournal 'criminal players' 'system'
+    replygump 0xfe5c638b 8
+    waitforgump 0xfe5c638b 15000
+    pause 100
+  endwhile
+  pause 400
+elseif @inlist 'Tracking' 6
+  while not @injournal 'innocent players' 'system'
+    replygump 0xfe5c638b 8
+    waitforgump 0xfe5c638b 15000
+    pause 100
+  endwhile
+  pause 400
+elseif @inlist 'Tracking' 7
+  while not @injournal 'friendly players' 'system'
+    replygump 0xfe5c638b 8
+    waitforgump 0xfe5c638b 15000
+    pause 100
+  endwhile
+  pause 400
+elseif @inlist 'Tracking' 8
+  while not @injournal 'aggressive creatures' 'system'
+    replygump 0xfe5c638b 8
+    waitforgump 0xfe5c638b 15000
+    pause 100
+  endwhile
+  pause 400
+elseif @inlist 'Tracking' 9
+  while not @injournal 'passive creatures' 'system'
+    replygump 0xfe5c638b 8
+    waitforgump 0xfe5c638b 15000
+    pause 100
+  endwhile
+  pause 400
+elseif not inlist 'Tracking'
+  headmsg 'SET CONFIG VALUE'
+endif
+if not ingump '0xfe5c638b' 'Always Get Closest'
+  while not @injournal 'track whatever is closest' 'system'
+    replygump 0xfe5c638b 10
+    waitforgump 0xfe5c638b 15000
+    pause 100
+  endwhile
+endif
+pause 500
+if not @ingump '0xfe5c638b' 'Stop Hunting'
+  replygump 0xfe5c638b 6
+endif
+clearjournal
