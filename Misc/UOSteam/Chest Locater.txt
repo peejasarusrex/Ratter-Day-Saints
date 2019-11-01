@@ -1,8 +1,8 @@
 //---------------------------------------------//
 //Name: Dungeon Chest Locator                  //
 //Author: Peej                                 //
-//Date: 9/17/2019                              //
-//Verson:4.1                                   //
+//Date: 11/11/2019                             //
+//Verson:4.2                                   //
 //Description: Finds chest location in Dungeon //
 //will let you know if its locked or unlocked  //
 //will place "headmsg" at location of chest    //
@@ -48,6 +48,9 @@ for 0 in 'dungeon_chest'
   endif
 endfor
 if @injournal 'dungeon chest' 'system' and @injournal 'locked and trapped' 'system'
+  headmsg '[CHEST LOCKED and TRAPPED]' Config[2]
+  clearjournal
+elseif @injournal 'dungeon chest' 'system' and @injournal 'locked' 'system'
   headmsg '[CHEST LOCKED]' Config[2]
   clearjournal
 elseif @injournal 'dungeon chest' 'system'
